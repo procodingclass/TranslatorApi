@@ -19,7 +19,7 @@ def welcome():
     p = gTranslator.translate(text, dest=lang)
     
     if p.pronunciation == None or p.pronunciation == text:
-       p.pronunciation = text 
+       p.pronunciation = gtranslation.text 
     return jsonify(phrase= gtranslation.text , pronunciation= p.pronunciation)
 
 @app.route('/hello')
