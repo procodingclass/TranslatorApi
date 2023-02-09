@@ -10,13 +10,17 @@ def welcome():
     args = request.args
     text = args["text"]
     lang = args["lang"]
+    if lang =="Chinese":
+        lang = "ZH-CN"
     
     gTranslator = gTrans()
     gtranslation = gTranslator.translate(text , dest= lang)
          
     p = gTranslator.translate(text, dest=lang)
     
-    return jsonify(phrase= gtranslation.text , pr= p.pronunciation)
+    if p.pronunciation == none || p.pronunciation == text:
+       p.pronunciation = text 
+    return jsonify(phrase= gtranslation.text , pronunciation= p.pronunciation)
 
 @app.route('/hello')
 def hello_world():
