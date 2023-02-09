@@ -18,7 +18,7 @@ def welcome():
          
     p = gTranslator.translate(text, dest=lang)
     
-    if p.pronunciation == none || p.pronunciation == text:
+    if p.pronunciation == none OR p.pronunciation == text:
        p.pronunciation = text 
     return jsonify(phrase= gtranslation.text , pronunciation= p.pronunciation)
 
