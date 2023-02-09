@@ -16,5 +16,9 @@ def welcome():
     
     return jsonify(phrase= gtranslation.text , pr= p.pronunciation)
 
+@app.route('/hello')
+def hello_world():
+    return 'Hello, World!'
+
 if __name__ == "__main__":
     app.run(debug=True)
