@@ -22,9 +22,13 @@ def welcome():
        p.pronunciation = gtranslation.text 
     return jsonify(phrase= gtranslation.text , pronunciation= p.pronunciation)
 
-@app.route('/hello')
-def hello_world():
-    return 'Hello, World!'
+@app.route('/language', method=['GET)
+def detectLanguage():
+    args = request.args
+    text = args["text"]
+    gTranslator = gTrans()
+    lang = gTranslator.detect(text)                           
+    return jsonify(language= lang)
 
 # CORS Headers 
 @app.after_request
