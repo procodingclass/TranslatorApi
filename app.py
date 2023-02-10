@@ -9,26 +9,24 @@ CORS(app)
 def welcome():
     args = request.args
     text = args["text"]
-    lang = args["lang"]
-    if lang =="Chinese":
-        lang = "ZH-CN"
+    srcLang = args["srcLang"]
+    destLang = args["destLang"]
+    if destLang == "Chinese":
+        destLang = "ZH-CN"
+    
+    if srcLang == "Chinese":
+        srcLang = "ZH-CN"
     
     gTranslator = gTrans()
-    gtranslation = gTranslator.translate(text , dest= lang)
+    gtranslation = gTranslator.translate(text ,src=srcLang, dest= destLang)
          
-    p = gTranslator.translate(text, dest=lang)
+    p = gTranslator.translate(text, dest= destlang)
     
     if p.pronunciation == None or p.pronunciation == text:
        p.pronunciation = gtranslation.text 
     return jsonify(phrase= gtranslation.text , pronunciation= p.pronunciation)
 
-@app.route('/language', methods=['GET'])
-def detectLanguage():
-    args = request.args
-    text = args["text"]
-    gTranslator = gTrans()
-    lang = gTranslator.detect(text)                           
-    return jsonify(language= lang)
+
 
 # CORS Headers 
 @app.after_request
