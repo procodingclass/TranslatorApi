@@ -20,7 +20,7 @@ def welcome():
     gTranslator = gTrans()
     gtranslation = gTranslator.translate(text ,src=srcLang, dest= destLang)
          
-    p = gTranslator.translate(text, dest= destlang)
+    p = gTranslator.translate(text, dest= destLang)
     
     if p.pronunciation == None or p.pronunciation == text:
        p.pronunciation = gtranslation.text 
