@@ -22,7 +22,7 @@ def welcome():
        p.pronunciation = gtranslation.text 
     return jsonify(phrase= gtranslation.text , pronunciation= p.pronunciation)
 
-@app.route('/language', method=['GET'])
+@app.route('/language', methods=['GET'])
 def detectLanguage():
     args = request.args
     text = args["text"]
